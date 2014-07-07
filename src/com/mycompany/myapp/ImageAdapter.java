@@ -4,6 +4,7 @@ import android.view.*;
 import java.util.ArrayList;
 import android.net.Uri;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.content.Context;
 
 public class ImageAdapter extends BaseAdapter {
@@ -12,7 +13,7 @@ public class ImageAdapter extends BaseAdapter {
 
     public ImageAdapter(Context c, ArrayList<Uri> imageUris) {
         mContext = c;
-        mImageUris = imageuris;
+        mImageUris = imageUris;
     }
 
     public int getCount() {
