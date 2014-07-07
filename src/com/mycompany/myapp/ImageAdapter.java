@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import android.net.Uri;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.GridView;
 import android.content.Context;
 
 public class ImageAdapter extends BaseAdapter {
