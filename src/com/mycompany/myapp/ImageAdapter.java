@@ -1,7 +1,7 @@
 package com.mycompany.myapp;
 
 import android.view.*;
-import android.util.ArrayList;
+import android.util.ArrayList<T>;
 import android.net.Uri;
 import android.widget.BaseAdapter;
 import android.content.Context;
