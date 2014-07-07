@@ -24,7 +24,7 @@ public class ProcessSingle extends Activity
             if (type.startsWith("image/")) {
                 ImageView iv = (ImageView) findViewById(R.id.single_image_view);
                 Uri imageUri = (Uri) intent.getParcelableExtra(Intent.EXTRA_STREAM);
-                iv.setImageUri(imageUri);
+                iv.setImageURI(imageUri);
             }
         }
 
