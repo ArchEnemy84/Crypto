@@ -7,6 +7,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.GridView;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 
 public class ImageAdapter extends BaseAdapter {
     private Context mContext;
@@ -40,8 +42,12 @@ public class ImageAdapter extends BaseAdapter {
         } else {
             imageView = (ImageView) convertView;
         }
+        Bitmap bitmapOriginal = BitmapFactory.decodeFile(((Uri)getItem(position)).toString());
+        Bitmap bitmapThumb = Bitmap.createScaledBitmap(bitmapOriginal,200,200,false);
+        bitmapOriginal.recycle();
+        imageView.setImageBitmap(bitmapThumb);
 
-        imageView.setImageURI((Uri)getItem(position));
+        //imageView.setImageURI((Uri)getItem(position));
         return imageView;
     }
 
