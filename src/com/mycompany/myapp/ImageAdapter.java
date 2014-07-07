@@ -1,18 +1,23 @@
 package com.mycompany.myapp;
 
+import android.widget.BaseAdapter;
+import android.content.Context;
+
 public class ImageAdapter extends BaseAdapter {
     private Context mContext;
+    private ArrayList<Uri> mImageUris;
 
-    public ImageAdapter(Context c) {
+    public ImageAdapter(Context c, ArrayList<Uri> imageUris) {
         mContext = c;
+        mImageUris = imageuris;
     }
 
     public int getCount() {
-        return mThumbIds.length;
+        return mImageUris.size();
     }
 
     public Object getItem(int position) {
-        return null;
+        return mImageUris.get(position);
     }
 
     public long getItemId(int position) {
@@ -24,29 +29,15 @@ public class ImageAdapter extends BaseAdapter {
         ImageView imageView;
         if (convertView == null) {  // if it's not recycled, initialize some attributes
             imageView = new ImageView(mContext);
-            imageView.setLayoutParams(new GridView.LayoutParams(85, 85));
+            //imageView.setLayoutParams(new GridView.LayoutParams(85, 85));
             imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-            imageView.setPadding(8, 8, 8, 8);
+            imageView.setPadding(4, 4, 4, 4);
         } else {
             imageView = (ImageView) convertView;
         }
 
-        imageView.setImageResource(mThumbIds[position]);
+        imageView.setImageURI((Uri)getItem(position));
         return imageView;
     }
 
-    // references to our images
-    private Integer[] mThumbIds = {
-            R.drawable.sample_2, R.drawable.sample_3,
-            R.drawable.sample_4, R.drawable.sample_5,
-            R.drawable.sample_6, R.drawable.sample_7,
-            R.drawable.sample_0, R.drawable.sample_1,
-            R.drawable.sample_2, R.drawable.sample_3,
-            R.drawable.sample_4, R.drawable.sample_5,
-            R.drawable.sample_6, R.drawable.sample_7,
-            R.drawable.sample_0, R.drawable.sample_1,
-            R.drawable.sample_2, R.drawable.sample_3,
-            R.drawable.sample_4, R.drawable.sample_5,
-            R.drawable.sample_6, R.drawable.sample_7
-    };
 }
