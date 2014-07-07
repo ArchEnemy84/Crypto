@@ -5,6 +5,9 @@ import android.os.*;
 import android.view.*;
 import android.widget.*;
 
+import android.content.Intent;
+import android.net.Uri;
+
 public class ProcessMultiple extends Activity
 {
     /** Called when the activity is first created. */
@@ -13,5 +16,18 @@ public class ProcessMultiple extends Activity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.process_multiple);
+        
+        Intent intent = getIntent();
+        String action = intent.getAction();
+        String type = intent.getType();
+        
+        GridView gv = (GridView) findViewById(R.id.multiple_grid_view);
+        
+        if (Intent.ACTION_SEND_MULTIPLE.equals(action) && type != null) {
+            if (type.startsWith("image/")) {
+                ArrayList<Uri> imageUris = intent.getParcelableArrayListExtra(Intent.EXTRA_STREAM);
+                gv.setAdapter(new ImageAdapter(this,imageUris));
+            }
+        }
     }
 }
