@@ -35,7 +35,7 @@ public class ImageAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) 
     {
         ImageView imageView;
-        boolean thumb = false;
+        boolean thumb = true;
         if (convertView == null) {  // if it's not recycled, initialize some attributes
             imageView = new ImageView(mContext);
             imageView.setLayoutParams(new GridView.LayoutParams(GridView.AUTO_FIT, 100));
@@ -49,7 +49,7 @@ public class ImageAdapter extends BaseAdapter {
         
         if(thumb)
         {
-            Bitmap bitmapOriginal = BitmapFactory.decodeFile(((Uri)getItem(position)).toString());
+            Bitmap bitmapOriginal = BitmapFactory.decodeFile(getRealPathFromURI(mContext,(Uri)getItem(position)));
             Bitmap bitmapThumb = Bitmap.createScaledBitmap(bitmapOriginal,200,200,true);
             bitmapOriginal.recycle();
             imageView.setImageBitmap(bitmapThumb);
@@ -62,4 +62,23 @@ public class ImageAdapter extends BaseAdapter {
         return imageView;
     }
 
+    public String getRealPathFromURI(Context context, Uri contentUri) 
+    {
+        Cursor cursor = null;
+        try 
+        { 
+            String[] proj = { MediaStore.Images.Media.DATA };
+            cursor = context.getContentResolver().query(contentUri,  proj, null, null, null);
+            int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+            cursor.moveToFirst();
+            return cursor.getString(column_index);
+        } 
+        finally 
+        {
+            if (cursor != null) 
+            {
+                cursor.close();
+            }
+        }
+    }
 }
