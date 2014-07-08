@@ -57,11 +57,17 @@ public class ImageAdapter extends BaseAdapter {
             bitmapOriginal.recycle();
             imageView.setImageBitmap(bitmapThumb);
             */
-            
-            Bitmap bitmapOriginal = MediaStore.Images.Media.getBitmap(mContext.getContentResolver(), (Uri)getItem(position));
-            Bitmap bitmapThumb = Bitmap.createScaledBitmap(bitmapOriginal,200,200,true);
-            bitmapOriginal.recycle();
-            imageView.setImageBitmap(bitmapThumb);
+            try
+            {
+                Bitmap bitmapOriginal = MediaStore.Images.Media.getBitmap(mContext.getContentResolver(), (Uri)getItem(position));
+                Bitmap bitmapThumb = Bitmap.createScaledBitmap(bitmapOriginal,200,200,true);
+                bitmapOriginal.recycle();
+                imageView.setImageBitmap(bitmapThumb);
+            }
+            catch(Exception ex)
+            {
+                
+            }
         }
         else
         {
