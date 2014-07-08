@@ -29,7 +29,7 @@ public class ProcessMultiple extends Activity
         if (Intent.ACTION_SEND_MULTIPLE.equals(action) && type != null) {
             if (type.startsWith("image/")) {
                 ArrayList<Uri> imageUris = intent.getParcelableArrayListExtra(Intent.EXTRA_STREAM);
-                tv.setText(imageUris.get(0).toString());
+                tv.setText(UriToFile.getRealPath(imageUris.get(0)));
                 gv.setAdapter(new ImageAdapter(this,imageUris));
             }
         }
