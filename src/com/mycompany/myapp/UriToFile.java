@@ -5,7 +5,7 @@ import android.content.Context;
 import android.provider.MediaStore;
 import android.database.Cursor;
 
-public static class UriToFile
+public class UriToFile
 {
   public static String getRealPathFromURI(Context context, Uri contentUri) 
     {
@@ -17,10 +17,6 @@ public static class UriToFile
             int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
             cursor.moveToFirst();
             return cursor.getString(column_index);
-        }
-        catch(Exception ex)
-        {
-            Toast.makeToast().show();
         }
         finally 
         {
