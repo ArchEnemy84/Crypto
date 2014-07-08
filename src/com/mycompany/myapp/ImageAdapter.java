@@ -51,7 +51,7 @@ public class ImageAdapter extends BaseAdapter {
         
         if(thumb)
         {
-            Bitmap bitmapOriginal = BitmapFactory.decodeFile(getRealPathFromURI(mContext,(Uri)getItem(position)));
+            Bitmap bitmapOriginal = BitmapFactory.decodeFile(UriToFile.getRealPathFromURI(mContext,(Uri)getItem(position)));
             Bitmap bitmapThumb = Bitmap.createScaledBitmap(bitmapOriginal,200,200,true);
             bitmapOriginal.recycle();
             imageView.setImageBitmap(bitmapThumb);
