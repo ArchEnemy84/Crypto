@@ -22,11 +22,14 @@ public class ProcessMultiple extends Activity
         String action = intent.getAction();
         String type = intent.getType();
         
+        TextView tv = (TextView) findViewById(R.id.multiple_header_textview);
+        
         GridView gv = (GridView) findViewById(R.id.multiple_grid_view);
         
         if (Intent.ACTION_SEND_MULTIPLE.equals(action) && type != null) {
             if (type.startsWith("image/")) {
                 ArrayList<Uri> imageUris = intent.getParcelableArrayListExtra(Intent.EXTRA_STREAM);
+                tv.setText(imageUris.get(0).toString());
                 gv.setAdapter(new ImageAdapter(this,imageUris));
             }
         }
