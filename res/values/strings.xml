@@ -5,4 +5,5 @@
     <string name="app_name">Crypto</string>
     <string name="send_single_label">Crypto Single</string>
     <string name="send_multiple_label">Crypto Multiple</string>
+    <string name="multiple_process_button_label">Process</string>
 </resources>
