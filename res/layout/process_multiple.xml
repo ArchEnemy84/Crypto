@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:gravity="center"
-    android:orientation="vertical" >
+    android:layout_height="fill_parent" >
 
     <TextView
         android:id="@+id/multiple_header_textview"
@@ -13,7 +11,7 @@
     <GridView xmlns:android="http://schemas.android.com/apk/res/android" 
     android:id="@+id/multiple_grid_view"
     android:layout_width="fill_parent" 
-    android:layout_height="wrap_content"
+    android:layout_below="@id/multiple_header_textview"
     android:columnWidth="90dp"
     android:numColumns="auto_fit"
     android:verticalSpacing="5dp"
@@ -23,7 +21,8 @@
     <Button
     android:id="@+id/multiple_process_button"
     android:text="@string/multiple_process_button_label" 
+    android:layout_alignParentBottom="true"
     android:layout_width="match_parent"
     android:layout_height="wrap_content" />
 
-</LinearLayout>
+</RelativeLayout>
