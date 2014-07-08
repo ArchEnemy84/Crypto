@@ -1,16 +1,16 @@
 package com.mycompany.myapp;
 
-import android.view.*;
-import java.util.ArrayList;
-import android.net.Uri;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.GridView;
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.database.Cursor;
+import android.net.Uri;
 import android.provider.MediaStore;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.GridView;
+import android.widget.ImageView;
+
+import java.util.ArrayList;
 
 public class ImageAdapter extends BaseAdapter {
     private Context mContext;
@@ -60,7 +60,7 @@ public class ImageAdapter extends BaseAdapter {
             try
             {
                 Bitmap bitmapOriginal = MediaStore.Images.Media.getBitmap(mContext.getContentResolver(), (Uri)getItem(position));
-                Bitmap bitmapThumb = Bitmap.createScaledBitmap(bitmapOriginal,200,200,true);
+                Bitmap bitmapThumb = Bitmap.createScaledBitmap(bitmapOriginal,200,200*(bitmapOriginal.getHeight()/bitmapOriginal.getWidth()),true);
                 bitmapOriginal.recycle();
                 imageView.setImageBitmap(bitmapThumb);
             }
