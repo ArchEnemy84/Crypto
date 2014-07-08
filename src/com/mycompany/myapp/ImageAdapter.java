@@ -60,7 +60,7 @@ public class ImageAdapter extends BaseAdapter {
             try
             {
                 Bitmap bitmapOriginal = MediaStore.Images.Media.getBitmap(mContext.getContentResolver(), (Uri)getItem(position));
-                Bitmap bitmapThumb = Bitmap.createScaledBitmap(bitmapOriginal,200,200*(bitmapOriginal.getHeight()/bitmapOriginal.getWidth()),true);
+                Bitmap bitmapThumb = Bitmap.createScaledBitmap(bitmapOriginal,200,(int)(200*((float)bitmapOriginal.getHeight()/(float)bitmapOriginal.getWidth())),true);
                 bitmapOriginal.recycle();
                 imageView.setImageBitmap(bitmapThumb);
             }
