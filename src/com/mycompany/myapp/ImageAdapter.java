@@ -32,7 +32,8 @@ public class ImageAdapter extends BaseAdapter {
     }
 
     // create a new ImageView for each item referenced by the Adapter
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(int position, View convertView, ViewGroup parent) 
+    {
         ImageView imageView;
         boolean thumb = true;
         if (convertView == null) {  // if it's not recycled, initialize some attributes
@@ -40,17 +41,24 @@ public class ImageAdapter extends BaseAdapter {
             imageView.setLayoutParams(new GridView.LayoutParams(GridView.AUTO_FIT, 100));
             imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
             imageView.setPadding(4, 4, 4, 4);
-        } else {
+        } 
+        else 
+        {
             imageView = (ImageView) convertView;
         }
-        if(thumb){
-        Bitmap bitmapOriginal = BitmapFactory.decodeFile(((Uri)getItem(position)).toString());
-        Bitmap bitmapThumb = Bitmap.createScaledBitmap(bitmapOriginal,200,200,false);
-        bitmapOriginal.recycle();
-        imageView.setImageBitmap(bitmapThumb);
-}else
-{
-        imageView.setImageURI((Uri)getItem(position));}
+        
+        if(thumb)
+        {
+            Bitmap bitmapOriginal = BitmapFactory.decodeFile(((Uri)getItem(position)).toString());
+            Bitmap bitmapThumb = Bitmap.createScaledBitmap(bitmapOriginal,200,200,true);
+            bitmapOriginal.recycle();
+            imageView.setImageBitmap(bitmapThumb);
+        }
+        else
+        {
+            imageView.setImageURI((Uri)getItem(position));
+        }
+        
         return imageView;
     }
 
