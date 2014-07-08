@@ -35,7 +35,7 @@ public class ImageAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) 
     {
         ImageView imageView;
-        boolean thumb = true;
+        boolean thumb = false;
         if (convertView == null) {  // if it's not recycled, initialize some attributes
             imageView = new ImageView(mContext);
             imageView.setLayoutParams(new GridView.LayoutParams(GridView.AUTO_FIT, 100));
